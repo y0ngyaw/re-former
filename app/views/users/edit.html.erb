@@ -1,0 +1,33 @@
+<h1>This is the Re-former App</h1>
+<br>
+<h4>Now it's time to edit a user</h4>
+
+<% if @user.errors.any? %>
+	<div id="error-explanation">
+		<%= pluralize(@user.errors.count, "error")%> stopped this information from being saved:
+
+		<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		<br>
+	</div>
+<% end %>
+
+<%= form_for @user, html: { method: 'put' } do |f| %>
+	<%= f.label :username %>
+	<%= f.text_field :username %>
+
+	<br>
+
+	<%= f.label :email %>
+	<%= f.email_field :email %>
+
+	<br>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+	<br>
+
+	<%= f.submit 'Create' %>
+<% end %>
